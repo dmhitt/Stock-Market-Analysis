@@ -327,7 +327,7 @@ function runEnter() {
     yaxis: {title: " % Change"},
   };
  
-  Plotly.newPlot("plot", data, layout);
+  Plotly.newPlot("plot", data, layout, {responsive: true});
   updatePlotly();
 }
   
