@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect
 from flask_pymongo import PyMongo
-from stonks import api_call
+from .stonks import api_call
 from flask import send_from_directory
 import os
 import json
