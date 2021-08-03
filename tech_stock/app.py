@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect
 from flask_pymongo import PyMongo
-#import stonks
-from .stonks import api_call
+import stonks
+#from .stonks import api_call
 from flask import send_from_directory
 import os
 import json
