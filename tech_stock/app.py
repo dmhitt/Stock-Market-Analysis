@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect
 from flask_pymongo import PyMongo
-import stonks
-#from .stonks import api_call
+#import stonks
+from stonks import api_call
 from flask import send_from_directory
 import os
 import json
@@ -21,7 +21,8 @@ mongo = PyMongo(app, uri='mongodb+srv://dadmin:Niteroi2you!@cluster0.d6jv9.mongo
 
 @app.route("/")
 def home():
-	stonks_data = stonks.api_call()
+	#stonks_data = stonks.api_call()
+	stonks_data = api_call()
 	mongo.db.collection.update({}, stonks_data, upsert=True)	
 	api_data = mongo.db.collection.find_one()
 	return render_template("index.html", api_data = api_data)
