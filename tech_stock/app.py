@@ -6,6 +6,7 @@ from flask import send_from_directory
 import os
 import json
 from bson import json_util
+from datetime import datetime
 
 
 # initialize flask
@@ -22,10 +23,14 @@ mongo = PyMongo(app, uri='mongodb+srv://dadmin:Niteroi2you!@cluster0.d6jv9.mongo
 @app.route("/")
 def home():
 	#stonks_data = stonks.api_call()
-	stonks_data = api_call()
-	mongo.db.collection.update({}, stonks_data, upsert=True)	
+	start = datetime.now()
+	#stonks_data = api_call()
+	#mongo.db.collection.update({}, stonks_data, upsert=True)	
 	api_data = mongo.db.collection.find_one()
+	end = datetime.now()
+	print ("total time =", end - start)
 	return render_template("index.html", api_data = api_data)
+
 
 
 
