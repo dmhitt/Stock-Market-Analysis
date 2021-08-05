@@ -109,7 +109,7 @@ function insertOptions2(valueChoosen, idChoosen){
 
 
 function init() {
-  d3.json("http://127.0.0.1:5000/data").then(function(data, error)   {
+  d3.json("https://tech-stock.herokuapp.com/data").then(function(data, error)   {
     
     var stocks = Object.keys(data);
            
@@ -340,7 +340,7 @@ function init2() {
 
 //function to plot the chart
 function buildLineBar(stock) {
-  d3.json("http://127.0.0.1:5000/data").then(function(data)   {
+  d3.json("https://tech-stock.herokuapp.com/data").then(function(data)   {
 
 var volumeData = [];
 var closeData = [];
