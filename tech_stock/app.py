@@ -16,7 +16,7 @@ app = Flask(__name__)
 #mongo = PyMongo(app, uri='mongodb://localhost:27017/stonks')
 
 #Connecting with MongoAtlas on the cloud
-mongo = PyMongo(app, uri='mongodb+srv://dadmin:Niteroi2you!@cluster0.d6jv9.mongodb.net/stonks?retryWrites=true&w=majority')
+mongo = PyMongo(app, uri='mongodb+srv://dadmin:Niteroi2you!@cluster0.d6jv9.mongodb.net/stonks?retryWrites=true&w=majority',connect = False)
 
 
 
