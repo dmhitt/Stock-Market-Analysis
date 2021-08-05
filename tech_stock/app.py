@@ -24,8 +24,8 @@ mongo = PyMongo(app, uri='mongodb+srv://dadmin:Niteroi2you!@cluster0.d6jv9.mongo
 def home():
 	#stonks_data = stonks.api_call()
 	start = datetime.now()
-	stonks_data = api_call()
-	mongo.db.collection.update({}, stonks_data, upsert=True)	
+	#stonks_data = api_call()
+	#mongo.db.collection.update({}, stonks_data, upsert=True)	
 	api_data = mongo.db.collection.find_one()
 	end = datetime.now()
 	print ("total time =", end - start)
