@@ -110,6 +110,7 @@ function insertOptions2(valueChoosen, idChoosen){
 
 function init() {
   d3.json("https://tech-stock.herokuapp.com/data").then(function(data, error)   {
+  //d3.json("http://127.0.0.1:5000/data").then(function(data, error)   {
     
     var stocks = Object.keys(data);
            
@@ -222,7 +223,7 @@ function runEnter() {
 
     var inputBeginDateValue = inputBeginYearValue.concat("-",inputBeginMonthValue,"-",inputBeginDayValue);
     var inputEndDateValue = inputEndYearValue.concat("-",inputEndMonthValue,"-",inputEndDayValue);
-    console.log(inputBeginDateValue)
+    //console.log(inputBeginDateValue)
      // new code tabulator
      var tableDataNew = [
        {Symbol: "S1", Name: "Stock1", Begin_Price: 0.00, End_Price:0.00 , Change: 0.00, Percent_Change: 0.00},
@@ -310,8 +311,8 @@ function runEnter() {
     ]
   });
 
-  console.log("stockTicker", stockTicker);
-  console.log("percentChangeBar=",percentChangeBar);
+  //console.log("stockTicker", stockTicker);
+  //console.log("percentChangeBar=",percentChangeBar);
 
   var trace1 = {
     x: stockTicker,
@@ -335,16 +336,17 @@ function runEnter() {
 function init2() {
   var startStock = "AAPL";
   buildLineBar(startStock);
-  console.log(startStock);
+  //console.log(startStock);
 }
 
 //function to plot the chart
 function buildLineBar(stock) {
   d3.json("https://tech-stock.herokuapp.com/data").then(function(data)   {
+  //d3.json("http://127.0.0.1:5000/data").then(function(data)   {
 
-var volumeData = [];
-var closeData = [];
-var dateData = [];
+  var volumeData = [];
+  var closeData = [];
+  var dateData = [];
 
 
     var dropdownMenu = d3.select("#stockChoice");
@@ -352,7 +354,7 @@ var dateData = [];
     var dataset = dropdownMenu.property("value");
 
     var filterData = data[dataset];
-    console.log(filterData);
+    //console.log(filterData);
     
     var data2 = Object.entries(filterData)
     data2.forEach(function([key, value]) {
@@ -366,9 +368,9 @@ var dateData = [];
     });
 
     var index = volumeData.length - 1;
-    console.log(index);
+    //console.log(index);
 
-    console.log(dateData[index])
+    //console.log(dateData[index])
     var dropdownMenuYearBegin = d3.select("#yearBegin");
     
     var dropdownMenuMonthBegin = d3.select("#monthBegin");
@@ -447,7 +449,7 @@ function updatePlotly() {
   var dropdownMenu = d3.select("#stockChoice");
   // Assign the value of the dropdown menu option to a variable
   var dataset = dropdownMenu.property("value");
-  console.log(dataset);
+  //console.log(dataset);
   buildLineBar(dataset);
 }
 

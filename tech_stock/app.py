@@ -1,12 +1,13 @@
 from flask import Flask, render_template, redirect
 from flask_pymongo import PyMongo
-#import stonks
-from .stonks import api_call
+from stonks import api_call
 from flask import send_from_directory
 import os
 import json
 from bson import json_util
 from datetime import datetime
+from .config import user_name
+from .config import pswd
 
 
 # initialize flask
@@ -16,13 +17,15 @@ app = Flask(__name__)
 #mongo = PyMongo(app, uri='mongodb://localhost:27017/stonks')
 
 #Connecting with MongoAtlas on the cloud
-mongo = PyMongo(app, uri='mongodb+srv://dadmin:Niteroi2you!@cluster0.d6jv9.mongodb.net/stonks?retryWrites=true&w=majority',connect = False)
+base_uri = 'mongodb+srv://'
+keys = user_name + ':' + pswd
+rest_uri = '@cluster0.d6jv9.mongodb.net/stonks?retryWrites=true&w=majority'
+uri = base_uri + keys + rest_uri
 
-
+mongo = PyMongo(app, uri=uri,connect = False)
 
 @app.route("/")
 def home():
-	#stonks_data = stonks.api_call()
 	start = datetime.now()
 	#stonks_data = api_call()
 	#mongo.db.collection.update({}, stonks_data, upsert=True)	
@@ -30,8 +33,6 @@ def home():
 	end = datetime.now()
 	print ("total time =", end - start)
 	return render_template("index.html", api_data = api_data)
-
-
 
 
 @app.route("/data")
