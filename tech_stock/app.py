@@ -6,8 +6,8 @@ import os
 import json
 from bson import json_util
 from datetime import datetime
-from config import user_name
-from config import pswd
+from .config import user_name
+from .config import pswd
 
 
 # initialize flask
