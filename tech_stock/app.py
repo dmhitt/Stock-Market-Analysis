@@ -1,13 +1,13 @@
 from flask import Flask, render_template, redirect
 from flask_pymongo import PyMongo
-from .stonks import api_call
+from stonks import api_call
 from flask import send_from_directory
 import os
 import json
 from bson import json_util
 from datetime import datetime
-from .config import user_name
-from .config import pswd
+from config import user_name
+from config import pswd
 
 
 # initialize flask
